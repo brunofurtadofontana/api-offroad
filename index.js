@@ -8,14 +8,14 @@ const server = restify.createServer({
 });
 
 var knex = require('knex')({
-    client: 'mysql',
-    connection: {
-      host : '127.0.0.1',
-      user : 'root',
-      password : '',
-      database : 'offroadv1'
-    }
-  });
+  client: 'mysql',
+  connection: {
+    host : '186.202.152.74',
+    user : 'offroadbd',
+    password : 'Br7896569',
+    database : 'offroadbd'
+  }
+});
 
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());
