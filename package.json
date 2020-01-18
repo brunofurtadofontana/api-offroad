@@ -11,9 +11,18 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "api-offroad",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "bruno furtado",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunofurtadofontana/api-offroad.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/brunofurtadofontana/api-offroad/issues"
+  },
+  "homepage": "https://github.com/brunofurtadofontana/api-offroad#readme"
 }
