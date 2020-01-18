@@ -4,7 +4,7 @@
   "description": "api rest for app",
   "main": "index.js",
   "dependencies": {
-    "knex": "^0.17.6",
+    "knex": "^0.19.5",
     "mysql": "^2.17.1",
     "restify": "^8.3.3",
     "restify-errors": "^8.0.0"
