@@ -48,6 +48,16 @@ server.get('/api/users',  (req, res, next) => { // Retorna os promoters, eventos
     
     
   });
+  server.get('/api/evento',  (req, res, next) => { 
+    knex('evento')
+    .select()
+    .then((dados ) => {
+      if(!dados)return res.send(new errors.BadRequestError('Nada foi encontrado!!'))
+            res.send(dados);
+    }, next)
+    
+    
+  });
   server.get('/api/evento/:id',  (req, res, next) => {
     
     const {id} = req.params;
