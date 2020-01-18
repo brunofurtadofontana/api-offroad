@@ -1,0 +1,18 @@
+{
+  "name": "offroad",
+  "version": "1.0.0",
+  "description": "api rest for app",
+  "main": "index.js",
+  "dependencies": {
+    "knex": "^0.17.6",
+    "mysql": "^2.17.1",
+    "restify": "^8.3.3",
+    "restify-errors": "^8.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bruno furtado",
+  "license": "ISC"
+}
