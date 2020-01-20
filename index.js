@@ -56,7 +56,6 @@ server.get('/api/users',  (req, res, next) => { // Retorna os promoters, eventos
             res.send(dados);
     }, next)
     
-    
   });
   server.get('/api/evento/:id',  (req, res, next) => {
     
@@ -72,11 +71,18 @@ server.get('/api/users',  (req, res, next) => { // Retorna os promoters, eventos
     
   });
   server.get('/api/evento_endereco',  (req, res, next) => { //Retorna os eventos e seus endereços
-    //knex('promoter').then((dados ) => {
-     //       res.send(dados);
-     //   }, next)
     knex('evento')
     .join('endereco','Evento_idEventos','=','idEventos')
+    .select()
+    .then((dados ) => {
+      if(!dados)return res.send(new errors.BadRequestError('Nada foi encontrado!!'))
+            res.send(dados);
+    }, next)
+    
+  });
+  server.get('/api/evento_imagem',  (req, res, next) => { //Retorna os eventos e seus endereços
+    knex('evento')
+    .join('evento_img','Evento_idEventos','=','idEventos')
     .select()
     .then((dados ) => {
       if(!dados)return res.send(new errors.BadRequestError('Nada foi encontrado!!'))
