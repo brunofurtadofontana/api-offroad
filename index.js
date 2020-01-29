@@ -1,6 +1,6 @@
 const restify = require('restify');
 const errors = require('restify-errors');
-
+var cors = require('cors');
 
 const server = restify.createServer({
   name: 'api web',
@@ -16,6 +16,8 @@ var knex = require('knex')({
     database : 'offroadbd'
   }
 });
+
+server.use(cors());
 
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());
