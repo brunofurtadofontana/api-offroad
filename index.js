@@ -63,6 +63,7 @@ server.listen(process.env.PORT || 8000, function() {
     
     const {id} = req.params;
     knex('evento')
+
     .where('idEventos',id)
     .first()
     .then((dados ) => {
@@ -76,6 +77,7 @@ server.listen(process.env.PORT || 8000, function() {
     const {title} = req.params;
     console.log({title})
     knex('evento')
+    .join('evento_img','Evento_idEventos','=','idEventos')
     .where('evenNome','like','%'+title[0]+'%')
     
     .then((dados ) => {
