@@ -63,7 +63,6 @@ server.listen(process.env.PORT || 8000, function() {
     
     const {id} = req.params;
     knex('evento')
-
     .where('idEventos',id)
     .first()
     .then((dados ) => {
@@ -72,7 +71,7 @@ server.listen(process.env.PORT || 8000, function() {
     }, next)
     
   });
-   server.get('/api/evento/title/:title',  (req, res, next) => {
+   server.get('/api/evento/title/:title',  (req, res, next) => { 
     
     const {title} = req.params;
     console.log({title})
@@ -87,10 +86,12 @@ server.listen(process.env.PORT || 8000, function() {
     
   });
 
-  server.get('/api/evento_endereco',  (req, res, next) => { //Retorna os eventos e seus endereços
-    knex('evento')
-    .join('endereco','Evento_idEventos','=','idEventos')
+  server.get('/api/evento/evento_endereco',  (req, res, next) => { //Retorna os eventos e seus endereços
+    knex('evento as ev')
     .select()
+    //
+    .join('evento_img as ei','ei.Evento_idEventos','ev.idEventos')
+    .join('endereco as e','e.Evento_idEventos','ev.idEventos')
     .then((dados ) => {
       if(!dados)return res.send(new errors.BadRequestError('Nada foi encontrado!!'))
             res.send(dados);
