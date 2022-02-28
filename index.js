@@ -89,7 +89,6 @@ server.listen(process.env.PORT || 8000, function() {
   server.get('/api/evento/evento_endereco',  (req, res, next) => { //Retorna os eventos e seus endereços
     knex('evento as ev')
     .select()
-    //
     .join('evento_img as ei','ei.Evento_idEventos','ev.idEventos')
     .join('endereco as e','e.Evento_idEventos','ev.idEventos')
     .then((dados ) => {
@@ -101,6 +100,16 @@ server.listen(process.env.PORT || 8000, function() {
   server.get('/api/evento_imagem',  (req, res, next) => { //Retorna os eventos e seus endereços
     knex('evento')
     .join('evento_img','Evento_idEventos','=','idEventos')
+    .select()
+    .then((dados ) => {
+      if(!dados)return res.send(new errors.BadRequestError('Nada foi encontrado!!'))
+            res.send(dados);
+    }, next)
+    
+  });
+
+  server.get('/api/calendario',  (req, res, next) => { //Retorna os eventos e seus endereços
+    knex('calendario')
     .select()
     .then((dados ) => {
       if(!dados)return res.send(new errors.BadRequestError('Nada foi encontrado!!'))
