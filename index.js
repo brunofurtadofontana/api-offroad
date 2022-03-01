@@ -110,9 +110,13 @@ server.listen(process.env.PORT || 8000, function() {
 
   server.get('/api/calendario',  (req, res, next) => { //Retorna os eventos e seus endereços
     knex('calendario')
-    .select()
+    .where('data_calendario','>=',knex.fn.now()) //retorna as data maiores que o dia atual
+    .orderBy('data_calendario','asc')
     .then((dados ) => {
       if(!dados)return res.send(new errors.BadRequestError('Nada foi encontrado!!'))
+            // if(res.send(dados.imagem_calendario)){
+            //   dados.imagem_calendario = 'https://off-roadspeed.com/pages/upload/'+ dados.imagem_calendario;
+            // }
             res.send(dados);
     }, next)
     
